@@ -6,6 +6,7 @@ class CreateActivities < ActiveRecord::Migration[7.0]
       t.string :experience_type
       t.text :description
       t.string :image_url
+      t.integer :price
 
       t.timestamps
     end

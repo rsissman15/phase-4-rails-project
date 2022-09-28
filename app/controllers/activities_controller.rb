@@ -5,7 +5,8 @@ class ActivitiesController < ApplicationController
   def index
     @activities = Activity.all
 
-    render json: @activities
+    #render json: @activities
+    render json: @activities, include: [{reservations:{include: [:user],except: [:user_id, :activity_id]}}]
   end
 
   # GET /activities/1

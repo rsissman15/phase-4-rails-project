@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  resources :activities
-  resources :reservations
+  
   resources :users
+  resources :reservations, only: [:index]
+
+  resources :activities do 
+    resources :reservations, only: [:create]
+  end
 
   get"/get-current-user"=>"sessions#get_current_user"
   post"/login"=>"sessions#login"
