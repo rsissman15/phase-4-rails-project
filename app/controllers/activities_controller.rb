@@ -1,5 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[ show update destroy ]
+  skip_before_action :authorized, only: [:create]
 
   # GET /activities
   def index

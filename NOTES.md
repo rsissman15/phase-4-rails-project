@@ -35,7 +35,8 @@ password digest
 Review
 ---
 user_id: belongs_to
-home_id: belongs_to
+activity_id: belongs_to
+reservation_id: belongs_to
 content: text
 rating: integer (between 1 and 10)
 
@@ -43,5 +44,13 @@ rating: integer (between 1 and 10)
 Activity
 ---
 location: string
+type: string
 description: text
 image: string
+
+Reservation
+---
+belongs_to User
+belongs_to Activity
+has_one: review
+date: date

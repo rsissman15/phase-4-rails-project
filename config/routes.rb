@@ -7,8 +7,10 @@ Rails.application.routes.draw do
     resources :reservations, only: [:create]
   end
 
-  get"/get-current-user"=>"sessions#get_current_user"
-  post"/login"=>"sessions#login"
+  get"/get-current-user", to: "sessions#get_current_user"
+  post"/login", to: "sessions#create"
+
+  
 
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  before_action :find_activitiy
+  before_action :find_activity
 
    # GET /users
    def index
@@ -8,6 +8,7 @@ class ReservationsController < ApplicationController
   end
 
   # POST /reservations
+
   def create
     @reservation = current_user.reservations.build(reservation_params.merge({activity_id:@activity.id}))
     if @reservation.save
@@ -18,7 +19,7 @@ class ReservationsController < ApplicationController
   end
 
   private
-    def find_activitiy
+    def find_activity
       @activity=Activity.find_by_id(params[:activity_id])
     end
 

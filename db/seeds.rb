@@ -34,5 +34,5 @@ wineAndDine=Activity.first
 secondActivity=Activity.second
 
 
-Reservation.create(date:Date.today, user:amark096User, activity:wineAndDine )
+#Reservation.create(date:Date.today, user:amark096User, activity:wineAndDine )
 Reservation.create(date:3.days.from_now, user:amark096User, activity:secondActivity )
