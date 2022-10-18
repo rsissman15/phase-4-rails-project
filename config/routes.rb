@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   resources :users
-  resources :reservations, only: [:index]
+  resources :reservations, only: [:show,:index,:destroy,:update]
 
   resources :activities do 
     resources :reservations, only: [:create]
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get"/get-current-user", to: "sessions#get_current_user"
   post"/login", to: "sessions#create"
-
+  
   
 
   

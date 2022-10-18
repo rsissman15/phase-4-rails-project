@@ -5,7 +5,12 @@ class ReservationsController < ApplicationController
    def index
     @reservations = Reservation.all
     render json: @reservations
-  end
+   end
+
+   def show
+    reservation=find_reservation
+    render json: reservation
+   end
 
   # POST /reservations
 
@@ -18,9 +23,25 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def destroy
+    reservation=find_reservation
+    reservation.destroy
+    head :no_content
+  end
+
+  def update
+    reservation=find_reservation
+    reservation.update(reservation_params)
+    render json: reservation
+  end
+
   private
     def find_activity
       @activity=Activity.find_by_id(params[:activity_id])
+    end
+
+    def find_reservation
+      Reservation.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
