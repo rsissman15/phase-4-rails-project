@@ -14,10 +14,13 @@ class SessionsController <  ApplicationController
             @token=encode_token({user_id:@user.id})
             render json: {user:@user, token: @token}, status: :ok 
         else
-            render json: {errors:"Username and Password must Match"}, status: :unprocessable_entity
+            # render json: @user.errors, status: :unprocessable_entity
+            render json: { errors: ["Invalid username or password"] }, status: :unauthorized
+
         end
     
     end
+
 
     def user_login_params
         params.require(:user).permit(:username, :password)

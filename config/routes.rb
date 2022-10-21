@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
   
-  resources :users
-  resources :reservations, only: [:show,:index,:destroy,:update]
-
-  resources :activities do 
-    resources :reservations, only: [:create]
+  resources :users do 
+    resources :reservations, only: [:index]
   end
 
-  get"/get-current-user", to: "sessions#get_current_user"
+  resources :reservations, only: [:index,:destroy,:update]
+
+  resources :activities do 
+    resources :reservations, only: [:create,:index]
+  end
+
+  get"/get-current-user", to: "sessions#get_current_user" 
   post"/login", to: "sessions#create"
+  
   
   
 

@@ -5,28 +5,32 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.all
-    render json: @users
+    render json: @users, include:['reservations']
   end
 
   # GET /users/1
   def show
-    render json: @user
+    user=User.find(params[:id])
+    render json: user, include:['reservations']
   end
 
    
- 
-
   # POST /users
   def create
+    #@user=User.new(user_params)
+    @user=User.create!(user_params)
+    @token=encode_token({user_id:@user.id})
+    render json: {user:@user, token: @token}, status: :created
 
-    @user=User.new(user_params)
+  rescue ActiveRecord::RecordInvalid => e
+    render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
     
-    if @user.save
-      @token=encode_token({user_id:@user.id})
-      render json: {user:@user, token: @token}, status: :created
-    else
-      render json: @user.errors, status: :unprocessable_entity
-    end
+    # if @user.save
+    #   @token=encode_token({user_id:@user.id})
+    #   render json: {user:@user, token: @token}, status: :created
+    # else
+    #   render json: @user.errors, status: :unprocessable_entity
+    # end
   end
 
   # PATCH/PUT /users/1
@@ -53,4 +57,6 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :password)
     end
+
+
 end

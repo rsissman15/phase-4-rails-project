@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
   before_action :find_activity
 
-   # GET /users
+   # GET /reservations
    def index
     @reservations = Reservation.all
     render json: @reservations
