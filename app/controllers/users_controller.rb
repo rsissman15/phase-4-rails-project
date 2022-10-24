@@ -5,13 +5,13 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.all
-    render json: @users, include:['reservations']
+    render json: @users, include: [{reservations:{include: [:activity]}}]
   end
 
   # GET /users/1
   def show
     user=User.find(params[:id])
-    render json: user, include:['reservations']
+    render json: user, include: [{reservations:{include: [:activity]}}]
   end
 
    

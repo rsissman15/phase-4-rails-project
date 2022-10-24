@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   resources :users do 
-    resources :reservations, only: [:index]
+    resources :reservations, only: [:index,:show] 
   end
 
   resources :reservations, only: [:index,:destroy,:update]

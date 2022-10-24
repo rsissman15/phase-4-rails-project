@@ -3,6 +3,7 @@ class SessionsController <  ApplicationController
 
     def get_current_user
         render json: current_user
+        binding.pry
         #retrieve a token adn decode that token in order to get the current user
     end
 
@@ -16,10 +17,11 @@ class SessionsController <  ApplicationController
         else
             # render json: @user.errors, status: :unprocessable_entity
             render json: { errors: ["Invalid username or password"] }, status: :unauthorized
-
         end
     
     end
+
+
 
 
     def user_login_params

@@ -3,8 +3,15 @@ class ReservationsController < ApplicationController
 
    # GET /reservations
    def index
-    @reservations = Reservation.all
-    render json: @reservations
+    if params[:user_id]
+      user = User.find(params[:user_id])
+      reservations = user.reservations
+    else
+      reservations = Reservations.all
+    end
+    render json: reservations, include: :user
+    # @reservations = Reservation.all
+    # render json: @reservations, include: [:activity]
    end
 
    def show
