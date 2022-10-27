@@ -9,7 +9,7 @@ class ReservationsController < ApplicationController
     else
       reservations = Reservations.all
     end
-    render json: reservations, include: :user
+    render json: reservations, include: [:user, :activity]
     # @reservations = Reservation.all
     # render json: @reservations, include: [:activity]
    end
@@ -26,7 +26,7 @@ class ReservationsController < ApplicationController
     if @reservation.save
       render json: @reservation, status: 200
     else
-      render json: {errors: @reservation.erros.full_messages}, status: :unprocessable_entity
+      render json: {errors: @reservation.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
@@ -38,8 +38,18 @@ class ReservationsController < ApplicationController
 
   def update
     reservation=find_reservation
-    reservation.update(reservation_params)
-    render json: reservation
+    if reservation.update(reservation_params)
+      render json: reservation
+    else
+      render json:{errors: reservation.errors.full_messages}, status: :unprocessable_entity
+    end
+    # end
+    # if(reservation)
+    # reservation.update(reservation_params)
+    # render json: reservation
+  # rescue ActiveRecord::RecordInvalid => e
+  #   render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
+    
   end
 
   private

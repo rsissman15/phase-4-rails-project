@@ -9,30 +9,29 @@
 
 
 
-# Activity.create([
-#     { 
-#         name:'Wine and Dine',
-#         price:15,
-#         location: 'New York',
-#         experience_type:'Food and Drink',
-#         description:'Wine tasting at vineyards',
-#         image_url:'https://cdn.securem2.com/commonimages/business/12594/2019/11/saratogawinery-36-display3.jpg'
-#     },
-#     {
-#         name:"NYC Food Tour",
-#         price:20,
-#         location:'New York',
-#         experience_type:'Food and Drink',
-#         description:'Food tour throughout NYC',
-#         image_url:'https://www.nicefoodandwinetours.com/uploads/3/1/3/1/31312321/header_images/1531047859.png'
-#     }
-   
+Activity.create([
+    { 
+        name:'Statue of Liberty Tour',
+        price:100,
+        location: 'New York',
+        experience_type:'Sightseeing',
+        description:'Private tour of Statue of Liberty',
+        image_url:'https://cdn.britannica.com/82/183382-050-D832EC3A/Detail-head-crown-Statue-of-Liberty-New.jpg'
+    },
+    {   name:'The Metropolitan Museum of Art',
+        price:15,
+        location: 'New York',
+        experience_type:'Sightseeing',
+        description:'Tour of the MET',
+        image_url:'https://media.cntraveler.com/photos/55d362f337284fb1079ccc4b/16:9/w_2560%2Cc_limit/metropolitan-museum-of-art-new-york-city.jpg'
 
-# ])
-amark096User=User.first
-wineAndDine=Activity.first
-secondActivity=Activity.second
+    }
+
+])
+# amark096User=User.first
+# wineAndDine=Activity.first
+# secondActivity=Activity.second
 
 
-#Reservation.create(date:Date.today, user:amark096User, activity:wineAndDine )
-Reservation.create(date:3.days.from_now, user:amark096User, activity:secondActivity )
+# #Reservation.create(date:Date.today, user:amark096User, activity:wineAndDine )
+# Reservation.create(date:3.days.from_now, user:amark096User, activity:secondActivity )

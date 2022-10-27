@@ -9,6 +9,7 @@ class User < ApplicationRecord
     validate :password_uppercase
     validate :password_special_char
     validate :password_contains_number
+    validates :username, uniqueness: true
   
     def password_uppercase
       return if !!password.match(/\p{Upper}/)
