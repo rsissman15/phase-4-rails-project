@@ -32,23 +32,27 @@ class ReservationsController < ApplicationController
 
   def destroy
     reservation=find_reservation
-    reservation.destroy
-    head :no_content
+    if reservation.user==current_user
+      reservation.destroy
+      head :no_content
+    else
+      render json: {errors:'You are not authorized'}, status: :unauthorized
+    end
   end
 
   def update
+
     reservation=find_reservation
-    if reservation.update(reservation_params)
-      render json: reservation
+    if reservation.user==current_user
+      if reservation.update(reservation_params)
+        render json: reservation
+      else
+        render json:{errors: reservation.errors.full_messages}, status: :unprocessable_entity
+      end
     else
-      render json:{errors: reservation.errors.full_messages}, status: :unprocessable_entity
+      render json: {errors:'You are not authorized'}, status: :unauthorized
     end
-    # end
-    # if(reservation)
-    # reservation.update(reservation_params)
-    # render json: reservation
-  # rescue ActiveRecord::RecordInvalid => e
-  #   render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
+   
     
   end
 
