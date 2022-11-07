@@ -1,26 +1,24 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Flex Phase 4 Build Backend
+This is a backend application for my activity application. The objective of this is to showcase what I did for Flatiron School. This application is a booking application for users to look up activities in the NYC area and reserve the activity for the date that they want. The user signs in to their account, can look at the details of an activity (a description and the price) and then book the reservation by using the calendar. Then the user can see their reservations that they made in the "reservation" tab. A user can also update the date or delete the reservation. 
+
+### Backend Setup
+
+This repository has all the starter code needed to get a Sinatra backend up and
+running. [**Fork and clone**][fork link] this repository to get started. Then, run
+`bundle install` to install the gems.
+
+[fork link]: https://github.com/rsissman15/phase-4-rails-project
+
+You can start your server with:
+
+```console
+$ rails s
+```
+
+This will run your server on port
+[http://localhost:3001](http://localhost:3001).
 
 My frontend github: https://github.com/rsissman15/phase-4-rails-project-frontend
 
-Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
