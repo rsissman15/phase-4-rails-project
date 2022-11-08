@@ -14,9 +14,9 @@ running. [**Fork and clone**][fork link] this repository to get started. Then, r
 
 [fork link]: https://github.com/rsissman15/phase-4-rails-project
 
-*Add in .env file to the phase-4-rails. Add in a JWT_SECRET and JWT_ALGORITHM
+* Add in .env file to the phase-4-rails. Add in a JWT_SECRET and JWT_ALGORITHM to that file. This will be used for the application contoller.
 
-*run rake db:migrate db:seed
+* Run rake db:migrate db:seed
 
 
 
